@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="endpart.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Car Rental</title>
+    <style>
+        body {
+            position: static;
+            margin: 0;
+            overflow-x: hidden;
+            /* Prevent horizontal overflow */
+            background-color: #f0f0f0;
+            /* Background color for the content area */
+            scroll-behavior: smooth;
+        }
+
+        .background-container {
+            position: relative;
+            /* Fix position to keep the image in place */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 730px;
+            /* Height of the fixed background image */
+            background-image: url('https://mainwebstorage.blob.core.windows.net/mediacontainers/styles/1920x1400/azure/2022-03/KE_Print05_MJ_103036_RGB%20copy2.jpg?h=de422346&itok=yETBEsMn');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: -1;
+            /* Ensure it stays behind other content */
+            transition: transform 0.5s ease-out;
+            /* Smooth transition for zoom effect */
+
+        }
+
+        .headline {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 50px;
+            z-index: 1;
+            /* Ensure text is above the background image */
+        }
+
+        .headline span {
+            color: orange;
+        }
+
+        .content-container {
+            margin-top: 150px;
+            /* Ensures content starts below the background image */
+            padding: 20px;
+            position: relative;
+            /* Ensure content is positioned relative to document flow */
+            height: 400px;
+            background-color: #f0f0f0;
+
+        }
+
+        .overview h3 {
+            margin-bottom: 20px;
+        }
+
+        .overview h4 {
+            line-height: 1.6;
+        }
+
+        .slider {
+            width: 80%;
+            /* Adjust as needed */
+            max-width: 1200px;
+            /* Adjust as needed */
+            height: 400px;
+            /* Height of the slider */
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            transform: translate(-50%, -50%);
+            /* Center slider vertically and horizontally */
+
+            border-radius: 10px;
+            /* Optional: rounded corners */
+            padding: 20px;
+            /* Optional: padding around the slider */
+            z-index: 1;
+            /* Ensure slider is above content */
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 1s ease;
+            /* Smooth transition for sliding effect */
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            width: 100%;
+            flex: 1 0 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            /* Text color */
+            text-align: center;
+            /* Center align text */
+            padding: 10px;
+            /* Optional: padding inside slides */
+            opacity: 0;
+            /* Start with hidden content */
+            transition: opacity 1s ease-in-out;
+            /* Smooth transition for fading effect */
+        }
+
+        .slide.active {
+            opacity: 1;
+            /* Fade in the current slide */
+        }
+
+        h3,
+        h4 {
+            margin: 0;
+            padding: 0;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            font-size: 16px;
+        }
+
+        .content-container {
+            position: relative;
+            margin: 0 auto;
+            max-width: 1200px;
+            /* Match slider width */
+            padding: 20px;
+            z-index: 0;
+            /* Ensure content is below slider */
+        }
+
+        .specs-separate {
+            width: 700px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .num {
+            font-size: 60px;
+            font-weight: bold;
+            padding: 20px;
+
+        }
+
+        .units {
+            padding: 60px;
+            margin-left: 40px;
+            font-weight: bolder;
+        }
+
+        .type {
+            padding: 60px;
+            margin-left: -50px;
+            font-weight: bolder;
+        }
+        .splide__slide img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .slider1 {
+    position: relative;
+    width: 500px; /* Adjust as needed */
+    height: 500px; /* Adjust to be square and larger than the image height */
+    overflow: hidden;
+   
+    margin: 50px auto; /* Center the slider */
+    background-color: #fff; /* Optional background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
+}
+
+.slides1 {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+
+.slide1 {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.slide1 img {
+    width: 100%;
+    height: auto;
+    /* Optional: rounded corners for images */
+    transition: transform 0.3s ease; /* Smooth scale transition */
+}
+
+.slide1:hover img {
+    transform: scale(1.1); /* Slightly enlarge image on hover */
+}
+
+@media (max-width: 600px) {
+    .slider1 {
+        width: 300px; /* Adjust for smaller screens */
+        height: 300px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <div  style="display: flex;flex-direction: column;height: 4000px;">
+        <div class="background-container" id="background">
+            <h1 style="padding-left: 680px;padding-top: 250px;" class="headline">One:<span>1</span></h1>
+        </div>
+
+        <div class="content-container">
+            <div style="display: flex;
+            flex-direction: row;">
+                <div class="overview" style="width: 400px;padding-left: 50px;">
+                    <h3>OVERVIEW</h3>
+                </div>
+                <div style="width: 900px;">
+                    <h4 style="font-size: 20px">The iconic Koenigsegg One:1 was the first homologated production car in
+                        the world with a power-to-weight ratio of 1:1 - the 'dream' ratio previously thought impossible
+                        in a road-legal sports car. Hence the name One:1.<br><br>
+                        And with one megawatt of power, it was also the world's first production megacar.<br><br>
+                        The One:1's unprecedented specifications raised performance expectations to new heights. It
+                        featured innovative solutions that enhanced track performance and top speed while never straying
+                        from everyday usability and stunning looks.</h4>
+                </div>
+            </div>
+
+        </div>
+        <div
+            style=" position: relative; top: 0;left: 0; width: 100%; height: 730px; /* Height of the fixed background image */ background-image: url('https://mainwebstorage.blob.core.windows.net/mediacontainers/styles/1920x1400/azure/2022-03/_DSC1841-Redigera_1.jpg?h=aab8e344&itok=Ybkc9nnP');background-size: cover;background-repeat: no-repeat;background-position: center;z-index: -1; ">
+            <div class="slider">
+                <div class="slides">
+                    <div class="slide active"
+                        style="display: flex;flex-direction: column;color: rgb(255, 255, 255);font-size:20px;">
+                        <div style="width: 140px;">
+                            <h2 style="font-size: 50px;">MEANER<br>AND GREENER</h2>
+                        </div>
+                        <div style="width: 300px;font-weight: bolder;font-size: 30PX;">
+                            <h4>Koenigsegg was the first extreme car <br>manufacturer to use green technology with the
+                                release of the biofuel CCXR in 2007. The One:1, a sibling of the highly competitive <br>
+                                Agera R, followed in the footsteps of the <br>CCXR, Koenisegg's first car to run on E85
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="slide"
+                        style="display: flex;flex-direction: column;color: rgb(255, 255, 255);font-size: 20px;">
+                        <div style="width: 140px;">
+                            <h2 style="font-size: 50px;">AGGRESSIVE<br>AERO KIT</h2>
+                        </div>
+                        <div style="width: 300px;font-weight: bolder;">
+                            <h4>Features include unique track-optimized<br>aero winglets, extended venturi tunnels and
+                                side splitters, Le-Mans inspired active wing configuration and optimized active
+                                under<br>trim air management.</h4>
+                        </div>
+                    </div>
+                    <div class="slide"
+                        style="display: flex;flex-direction: column;color: rgb(255, 255, 255);font-size: 20px;">
+                        <div style="width: 140px;">
+                            <h2 style="font-size: 50px;">FOCUSED ON ULTIMATE PERFORMANCE</h2>
+                        </div>
+                        <div style="width: 300px;font-weight: bolder;">
+                            <h4>Large air vents for improved cooling, roof air scoop to support the 1 MW of power, 8250
+                                RPM rev limit, upgraded rear Triplex<br>suspension with carbon bevel springs
+                                and<br>active shock absorbers and ride height,<br>combined with upgraded
+                                Koenigsegg<br>Aircore carbon fiber wheels</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 300px;margin-top: 100px;margin-left: 80px;">
+            <div>
+                <P style="font-weight: bolder;">ONE:1 <br>SPECIFICATIONS</P>
+            </div>
+            <div style="display: flex;flex-direction: row;padding-left: 100px;">
+                <div style="display: flex;flex-direction: column;">
+                    <div class="specs-separate">
+                        <div class="num ">1</div>
+                        <div class="units" style="padding-left: 185px;">MW</div>
+                        <div class="type">Output</div>
+                    </div>
+                    <hr style=" border: none; height: 1px; background-color: #000000;margin: 20px 0;width: 560px;">
+                    <div class="specs-separate">
+                        <div class="num ">1371</div>
+                        <div class="units">NM</div>
+                        <div class="type">Max Torque</div>
+                    </div>
+                    <hr style=" border: none; height: 1px; background-color: #000000;margin: 20px 0;width: 560px;">
+                    <div class="specs-separate">
+                        <div class="num ">5.0</div>
+                        <div class="units" style="padding-left: 124px;">LITRES</div>
+                        <div class="type" style="padding-left: 30px;">V8 displacement</div>
+                    </div>
+                    <hr style=" border:0rex; height: 1px; background-color: #000000;margin: 20px 0;width: 560px;">
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <div class="specs-separate">
+                        <div class="num ">1360</div>
+                        <div class="units">KG</div>
+                        <div class="type">Curb wieght</div>
+                    </div>
+                    <hr style=" border: none; height: 1px; background-color: #000000;margin: 20px 0;width: 560px;">
+                    <div class="specs-separate">
+                        <div class="num ">8250</div>
+                        <div class="units">RPM</div>
+                        <div class="type" style="padding-left: 45px;">RPM limiter</div>
+                    </div>
+                    <hr style=" border: none; height: 1px; background-color: #000000;margin: 20px 0;width: 560px;">
+                </div>
+            </div>
+        </div>
+    
+        <div style="margin-top: 400px;margin-left: 80px;display: flex;flex-direction: row;justify-content: center;">
+            
+            <div style="size: 400px;padding-right: 40px;">
+                <P style="font-weight: bolder;">OPTIMAL <br>COMFORT</P>
+            </div>
+            <div style="width: 500px;">
+                <h4>While active and aggressive aerodynamics
+                    define the exterior of this iconic Koenigsegg,
+                    the inside of the One:1 is functional and
+                    driver-focused, consisting of a mix of
+                    lightweight materials and well-appointed
+                    instrumentation.</h4>
+            </div>
+        </div>
+        <div class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slider-item">
+                    <img src="./images/kone1.jpeg" alt="Gallery Image 1">
+                </div>
+                <div class="slider-item">
+                    <img src="./images/kone12.jpg" alt="Gallery Image 2">
+                </div>
+                <div class="slider-item">
+                    <img src="./images/kone13.jpg" alt="Gallery Image 3">
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="control" id="prev">❮</button>
+                <button class="control" id="next">❯</button>
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: row; padding-left: 800px; margin-top: 150px;">
+            <div style="padding-left: 20px;">
+                <ul style="list-style-type: none;">
+                    <li style="padding: 20px;"><a href="">Megacars</a></li>
+                    <li style="padding: 20px;"><a href="">Technology</a></li>
+                    <li style="padding: 20px;"><a href="">About</a></li>
+                    <li style="padding: 20px;"><a href="">History</a></li>
+                </ul>
+            </div>
+            <div style="padding-left: 40px; padding-right: 40px;">
+                <ul style="list-style-type: none;font-weight: lighter;">
+                    <li style="padding: 20px;"><a href="">Dealer locator</a></li>
+                    <li style="padding: 20px;"><a href="">Shop</a></li>
+                    <li style="padding: 20px;"><a href="">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul style="list-style-type: none;">
+                    <li style="padding: 20px;"><a href="">Careers</a></li>
+                    <li style="padding: 20px;"><a href="">Press</a></li>
+                    <li style="padding: 20px;"><a href="">Factory tours</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="display: flex;flex-direction: row;">
+        <div style="display: flex;flex-direction: row;size: 200px;margin-left:200px ;margin-top: 50px;">
+            <div style="padding-left: 15px;" >
+                <img  style ="width: 20px;" src="https://cdn-icons-png.flaticon.com/128/1384/1384031.png" alt="">
+            </div>
+            <div style="padding-left: 15px;">
+                <img  style ="width: 20px;" src="https://cdn-icons-png.flaticon.com/128/733/733635.png" alt="">
+            </div>
+            <div style="padding-left: 15px;" >
+                <img  style ="width: 20px;" src="https://cdn-icons-png.flaticon.com/128/152/152810.png" alt="">
+            </div>
+            <div style="padding-left: 15px;">
+                <img  style ="width: 20px;" src="https://cdn-icons-png.flaticon.com/128/3536/3536569.png" alt="">
+            </div>
+            <div style="padding-left: 15px;">
+                <img  style ="width: 20px;" src="https://cdn-icons-png.flaticon.com/128/20/20837.png" alt="">
+            </div>
+        </div>
+        <div style="padding-left: 900px;margin-top: 20px;">
+            <img style="height: 70px;" src="https://pngimg.com/d/koenigsegg_PNG4.png" alt="">
+        </div>
+        </div>
+        <div>
+            <hr style="border: none; /* Remove default border */
+            height: 1px; /* Set the thickness of the line */
+            width: 80%; /* Set the width of the line (adjust as needed) */
+            background-color: black; /* Set the color of the line */
+            margin: 0 auto; /* Center the line horizontally */
+            margin-top: 20px;">
+        </div>
+        <div style="margin-left:200px ;">
+            <h5 style="font-size: 15px;">Copyright &#169; since 1994 - Koenigsegg AutoMotive AB</h5>
+        </div>
+        
+    </div>
+    <script>
+        const background = document.getElementById('background');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            // Calculate a more subtle scale factor based on the scroll position
+            const maxZoom = 1.1; // Maximum zoom level (e.g., 10% zoom in)
+            const minZoom = 1;   // Minimum zoom level (no zoom)
+            const scale = Math.min(maxZoom, Math.max(minZoom, 1 + scrollY / 2000)); // Adjust 2000 to control zoom sensitivity
+            background.style.transform = `scale(${scale})`;
+        });
+
+
+        // script.js
+        let currentIndex = 0;
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slide').length;
+        const slideElements = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            const slideWidth = slides.clientWidth;
+            slides.style.transform = `translateX(-${index * slideWidth}px)`;
+
+            // Remove active class from all slides
+            slideElements.forEach(slide => slide.classList.remove('active'));
+
+            // Add active class to the current slide
+            slideElements[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentIndex++;
+            if (currentIndex >= totalSlides) {
+                currentIndex = 0;
+            }
+            showSlide(currentIndex);
+        }
+
+        setInterval(nextSlide, 3000); // Change slide every 3 seconds
+
+        window.addEventListener('resize', () => {
+            showSlide(currentIndex); // Adjust slide position on window resize
+        });
+        var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+
+
+
+    </script>
+    <script src="gallery.js"></script>
+</body>
+
+</html>
+
+
